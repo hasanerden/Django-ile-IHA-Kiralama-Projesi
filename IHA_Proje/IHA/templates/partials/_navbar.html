@@ -1,0 +1,43 @@
+
+
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">IHA Kiralama Projesi</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+
+            <ul class="navbar-nav me-auto">
+            
+                <li class="nav-item"> <a class="nav-link" href="{% url 'home' %}">Anasayfa</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kategoriler</a>
+                    <ul class="dropdown-menu">
+                        {% include 'partials/_topcategories.html' %}
+                    </ul>
+                </li> 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">İşlemler</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'post_iha_create' %}">Yeni İHA Kaydı</a></li>  
+                        <li><a class="dropdown-item" href="{% url 'iha_datatable' %}">IHA DataTables Update/Delete</a></li>  
+                    </ul>
+                </li>                   
+
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    
+                    <li class="nav-item"><a class="nav-link" href="">Hoş Geldiniz, {{ user.get_full_name|title }} <span class="ms-2"> | </span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Çıkış Yap</a></li>
+                {% else %}
+                <li class="nav-item"> <a class="nav-link" href="{% url 'login' %}">Üye Girişi</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Yeni Üyelik</a></li>
+                {% endif %}
+
+            </ul>   
+        </div>     
+    </div>
+</nav>

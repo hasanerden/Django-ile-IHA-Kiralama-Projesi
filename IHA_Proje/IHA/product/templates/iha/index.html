@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_files %}
+   
+{% endblock %}
+
+
+{% block title%} {% endblock %}
+
+{% block content %}
+
+<div class="container mt-3">
+    {% include 'messages.html' %}
+    <div class="row">
+        <div class="col-3">
+            {% include 'partials/_categories.html' %}
+        </div>
+        <div class="col-9">
+            {% if categoriinfo.name|length > 0 %}<h1>{{ categoriinfo.name }}</h1> <hr>{% endif %}
+           
+            <div class="row">
+                {% if vehicles|length > 0 %}
+                    {% for vehicle in vehicles %}
+                        {% if vehicle.is_active %}
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <img src=" {{ vehicle.image.url }}" alt="" class="img-fluid">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="{% url 'iha_details' vehicle.slug %}"> {{ vehicle.brand }}</a></h5>
+                                        <p>{{ vehicle.model }} | {{ vehicle.weight }} kg</p>
+                                        <a href="#" class="btn btn-primary w-100">Kirala</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-danger" role="alert">
+                        Listelenecek İHA bulunamadı !
+                    </div>                
+                {% endif %}
+
+            </div>
+         
+        </div>
+    </div>
+</div>
+
+{% endblock %}

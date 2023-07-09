@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title%} {{ vehicle.brand }} {% endblock %}
+
+{% block content %}
+
+    <div class="container mt-3">
+        <div class="card mb-3">
+            <img src="{{ vehicle.image.url }}" alt="" class="img-fluid">
+            <div class="card-body">
+                <h5 class="card-title"> {{ vehicle.brand }} | {{ vehicle.model }} | {{ vehicle.weight }} kg</h5>
+                <p class="card-text">{{ vehicle.description|safe }} </p>
+                <a href="#" class="btn btn-primary">Kirala</a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+{% endblock %}
+
+ 

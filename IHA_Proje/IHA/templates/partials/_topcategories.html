@@ -1,0 +1,3 @@
+    {% for categori in categories %}
+        <li><a class="dropdown-item" href="{% url 'iha_categoriy' categori.slug %}">{{ categori.name }}</a></li>   
+    {% endfor %}  

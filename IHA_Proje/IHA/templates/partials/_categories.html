@@ -1,0 +1,9 @@
+<div class="list-group">
+    {% for categori in categories %}
+        {% if categori.slug == categoriinfo.slug %}
+            <a class="list-group-item list-group-item-action active" href="{% url 'iha_categoriy' categori.slug %}">{{ categori.name }}</a>
+        {% else %}
+             <a class="list-group-item list-group-item-action" href="{% url 'iha_categoriy' categori.slug %}">{{ categori.name }}</a>                
+        {% endif %}    
+    {% endfor %}  
+</div>

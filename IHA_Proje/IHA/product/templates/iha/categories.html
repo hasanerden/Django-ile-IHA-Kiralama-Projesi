@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_files %}
+   
+{% endblock %}
+
+
+{% block title%} Kategoriler{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-3">
+            {% include 'partials/_categories.html' %}
+        </div>
+        <div class="col-9">
+            <h1></h1>
+            <hr>
+
+            <div class="row">
+                {% for vehicle in vehicles %}
+                    {% if vehicle.is_active %}
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <img src=" {{ vehicle.image.url }}" alt="" class="img-fluid">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="{% url 'iha_details' vehicle.slug %}"> {{ vehicle.brand }}</a></h5>
+                                    <p>{{ vehicle.model }} | {{ vehicle.weight }} kg</p>
+                                    <a href="#" class="btn btn-primary">Kirala</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+
+         
+        </div>
+    </div>
+</div>
+
+{% endblock %}
